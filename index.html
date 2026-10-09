@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1c1235">
+
+    <title>Purple Quiz | Desafie sua mente</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="brilho brilho-1"></div>
+    <div class="brilho brilho-2"></div>
+
+    <main class="app">
+
+        <header class="cabecalho">
+            <a class="logo" href="#" aria-label="Purple Quiz início">
+                <span class="logo-icone">✳</span>
+                <span>purple<span class="logo-destaque">quiz</span></span>
+            </a>
+
+            <span class="tag-topo">
+                <span class="status"></span>
+                DESAFIO DO DIA
+            </span>
+        </header>
+
+        <section class="quiz-card">
+
+            <!-- ÁREA DAS PERGUNTAS -->
+            <div id="telaQuiz">
+
+                <div class="quiz-topo">
+                    <div>
+                        <span class="sobrelinha">UM MOMENTO PARA VOCÊ</span>
+                        <h1>Teste sua <span>mente.</span></h1>
+                        <p class="subtitulo">
+                            Curiosidades, conhecimento e um toque de diversão.
+                        </p>
+                    </div>
+
+                    <div class="icone-trofeu" aria-hidden="true">✦</div>
+                </div>
+
+                <div class="progresso-area">
+                    <div class="progresso-textos">
+                        <span id="numeroPergunta">PERGUNTA 01 DE 08</span>
+                        <span id="textoProgresso">0% concluído</span>
+                    </div>
+
+                    <div
+                        class="barra-fundo"
+                        role="progressbar"
+                        aria-label="Progresso do quiz"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                        aria-valuenow="0"
+                        id="barraContainer"
+                    >
+                        <div class="barra-progresso" id="barraProgresso"></div>
+                    </div>
+                </div>
+
+                <div id="conteudoPergunta" aria-live="polite">
+                    <div class="categoria" id="categoria">CURIOSIDADES</div>
+
+                    <h2 id="pergunta">
+                        Preparado para o desafio?
+                    </h2>
+
+                    <p class="instrucao">
+                        Escolha a alternativa que você considera correta.
+                    </p>
+
+                    <div
+                        class="alternativas"
+                        id="alternativas"
+                        role="group"
+                        aria-label="Alternativas de resposta"
+                    ></div>
+
+                    <div id="feedback" class="feedback" aria-live="polite" hidden>
+                        <span id="feedbackIcone"></span>
+                        <div>
+                            <strong id="feedbackTitulo"></strong>
+                            <p id="feedbackTexto"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quiz-rodape">
+                    <span class="dica"><span>✧</span> Confie no que você sabe!</span>
+
+                    <button class="botao-principal" id="botaoProximo" disabled>
+                        Próxima <span>→</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- TELA FINAL -->
+            <section id="telaResultado" class="resultado" hidden>
+                <div class="resultado-icone" id="iconeResultado">🏆</div>
+
+                <span class="sobrelinha">FIM DO DESAFIO</span>
+
+                <h1 id="tituloResultado">Você conseguiu!</h1>
+
+                <p id="mensagemResultado" class="mensagem-resultado">
+                    Cada pergunta é uma oportunidade de aprender.
+                </p>
+
+                <div class="pontuacao-card">
+                    <span class="pontuacao-legenda">SUA PONTUAÇÃO</span>
+
+                    <div class="pontuacao-grande">
+                        <span id="pontuacaoFinal">0</span>
+                        <span class="pontuacao-separador">/</span>
+                        <span id="pontuacaoMaxima">8</span>
+                    </div>
+
+                    <div class="resultado-barra">
+                        <div id="barraFinal"></div>
+                    </div>
+
+                    <div class="resultado-detalhes">
+                        <div>
+                            <strong id="acertosFinais">0</strong>
+                            <span>Acertos</span>
+                        </div>
+
+                        <div>
+                            <strong id="errosFinais">0</strong>
+                            <span>Erros</span>
+                        </div>
+
+                        <div>
+                            <strong id="porcentagemFinal">0%</strong>
+                            <span>Desempenho</span>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="frase-final" id="fraseFinal">
+                    Seu próximo desafio começa agora.
+                </p>
+
+                <button class="botao-principal botao-reiniciar" id="botaoReiniciar">
+                    <span>↻</span> Jogar novamente
+                </button>
+            </section>
+
+        </section>
+
+        <footer class="rodape">
+            <span>FEITO PARA DESPERTAR SUA CURIOSIDADE</span>
+            <span class="rodape-simbolo">✧</span>
+        </footer>
+
+    </main>
+    
+    <script src="js/script.js" defer></script>
+
+</body>
+</html>

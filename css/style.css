@@ -1,0 +1,655 @@
+:root {
+    --fundo: #160d29;
+    --fundo-card: rgba(36, 24, 59, 0.94);
+    --roxo: #a78bfa;
+    --roxo-claro: #d8c8ff;
+    --lilas: #c4b5fd;
+    --texto: #f7f3ff;
+    --texto-suave: #a89bbf;
+    --borda: rgba(205, 184, 255, 0.13);
+    --verde: #69e3b0;
+    --vermelho: #ff8caa;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    padding: 30px 20px;
+    position: relative;
+    background:
+        radial-gradient(ellipse at 50% 0%, #33204f 0%, transparent 50%),
+        var(--fundo);
+    color: var(--texto);
+    font-family: "DM Sans", sans-serif;
+}
+
+button,
+a {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible {
+    outline: 3px solid #d8c8ff;
+    outline-offset: 4px;
+}
+
+.brilho {
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    filter: blur(110px);
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.brilho-1 {
+    background: #9b5de5;
+    top: 10%;
+    left: -170px;
+}
+
+.brilho-2 {
+    background: #6d4aff;
+    bottom: 0;
+    right: -170px;
+}
+
+.app {
+    width: 100%;
+    max-width: 740px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 48px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--texto);
+    font: 800 23px "Manrope", sans-serif;
+    letter-spacing: -1.1px;
+    text-decoration: none;
+}
+
+.logo-icone {
+    display: grid;
+    place-items: center;
+    width: 37px;
+    height: 37px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #c4b5fd, #8b5cf6);
+    color: #271344;
+    font-size: 23px;
+}
+
+.logo-destaque {
+    color: var(--roxo);
+}
+
+.tag-topo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    border: 1px solid var(--borda);
+    border-radius: 30px;
+    color: var(--roxo-claro);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.status {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--verde);
+    box-shadow: 0 0 12px rgba(105, 227, 176, 0.7);
+}
+
+.quiz-card {
+    padding: 37px;
+    border: 1px solid var(--borda);
+    border-radius: 25px;
+    background: var(--fundo-card);
+    box-shadow:
+        0 30px 90px rgba(0, 0, 0, 0.22),
+        inset 0 1px rgba(255, 255, 255, 0.035);
+    backdrop-filter: blur(20px);
+}
+
+.quiz-topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 32px;
+}
+
+.sobrelinha {
+    display: block;
+    margin-bottom: 13px;
+    color: var(--roxo);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.quiz-topo h1,
+.resultado h1 {
+    margin-bottom: 11px;
+    font: 800 clamp(28px, 5vw, 39px) "Manrope", sans-serif;
+    letter-spacing: -1.7px;
+    line-height: 1.2;
+}
+
+.quiz-topo h1 > span {
+    color: var(--roxo);
+}
+
+.subtitulo,
+.mensagem-resultado {
+    max-width: 430px;
+    color: var(--texto-suave);
+    font-size: 12px;
+    line-height: 1.9;
+}
+
+.icone-trofeu {
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+    width: 65px;
+    height: 65px;
+    border: 1px solid rgba(196, 181, 253, 0.15);
+    border-radius: 21px;
+    background: linear-gradient(135deg, #453066, #2b1c46);
+    color: #e0c9ff;
+    font-size: 35px;
+    transform: rotate(5deg);
+}
+
+.progresso-area {
+    margin-bottom: 35px;
+}
+
+.progresso-textos {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 11px;
+    color: var(--roxo-claro);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+}
+
+.barra-fundo {
+    height: 6px;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #3a2a52;
+}
+
+.barra-progresso {
+    width: 0;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #8b5cf6, #d8b4fe);
+    box-shadow: 0 0 14px rgba(167, 139, 250, 0.3);
+    transition: width 0.45s ease;
+}
+
+.categoria {
+    display: inline-flex;
+    margin-bottom: 14px;
+    padding: 7px 10px;
+    border: 1px solid rgba(167, 139, 250, 0.18);
+    border-radius: 7px;
+    background: rgba(167, 139, 250, 0.08);
+    color: var(--roxo-claro);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+#pergunta {
+    margin-bottom: 10px;
+    font: 700 clamp(19px, 4vw, 25px) "Manrope", sans-serif;
+    letter-spacing: -0.6px;
+    line-height: 1.55;
+}
+
+.instrucao {
+    margin-bottom: 23px;
+    color: var(--texto-suave);
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+.alternativas {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 11px;
+}
+
+.alternativa {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    min-height: 65px;
+    padding: 13px;
+    border: 1px solid var(--borda);
+    border-radius: 13px;
+    background: rgba(255, 255, 255, 0.025);
+    color: var(--texto);
+    text-align: left;
+    transition:
+        background 0.2s,
+        border-color 0.2s,
+        transform 0.2s;
+}
+
+.alternativa:hover:not(:disabled) {
+    transform: translateY(-2px);
+    border-color: rgba(196, 181, 253, 0.6);
+    background: rgba(167, 139, 250, 0.09);
+}
+
+.letra-alternativa {
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(205, 184, 255, 0.14);
+    border-radius: 9px;
+    background: #33234c;
+    color: var(--roxo-claro);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.texto-alternativa {
+    flex: 1;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.simbolo-alternativa {
+    flex-shrink: 0;
+    font-size: 14px;
+}
+
+.alternativa.correta {
+    border-color: rgba(105, 227, 176, 0.7);
+    background: rgba(105, 227, 176, 0.09);
+}
+
+.alternativa.correta .letra-alternativa {
+    border-color: var(--verde);
+    background: var(--verde);
+    color: #17352a;
+}
+
+.alternativa.errada {
+    border-color: rgba(255, 140, 170, 0.7);
+    background: rgba(255, 140, 170, 0.08);
+}
+
+.alternativa.errada .letra-alternativa {
+    border-color: var(--vermelho);
+    background: var(--vermelho);
+    color: #401525;
+}
+
+.alternativa:disabled {
+    cursor: default;
+}
+
+.feedback {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 18px;
+    padding: 15px;
+    border: 1px solid var(--borda);
+    border-radius: 13px;
+    animation: aparecer 0.25s ease;
+}
+
+.feedback.certo {
+    border-color: rgba(105, 227, 176, 0.2);
+    background: rgba(105, 227, 176, 0.07);
+}
+
+.feedback.errado {
+    border-color: rgba(255, 140, 170, 0.2);
+    background: rgba(255, 140, 170, 0.06);
+}
+
+.feedback-icone {
+    flex-shrink: 0;
+    font-size: 20px;
+}
+
+.feedback strong {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 12px;
+}
+
+.feedback p {
+    color: var(--texto-suave);
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+.quiz-rodape {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 28px;
+    padding-top: 22px;
+    border-top: 1px solid var(--borda);
+}
+
+.dica {
+    color: var(--texto-suave);
+    font-size: 10px;
+}
+
+.dica span {
+    margin-right: 5px;
+    color: var(--roxo);
+    font-size: 16px;
+}
+
+.botao-principal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    min-height: 47px;
+    padding: 0 21px;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    background: linear-gradient(115deg, #b9a0ff, #9270f5);
+    box-shadow: 0 7px 24px rgba(139, 92, 246, 0.15);
+    color: #211438;
+    font-size: 11px;
+    font-weight: 700;
+    transition: transform 0.2s, filter 0.2s;
+}
+
+.botao-principal:hover:not(:disabled) {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+}
+
+.botao-principal:disabled {
+    cursor: not-allowed;
+    opacity: 0.42;
+    box-shadow: none;
+}
+
+.botao-principal span {
+    font-size: 17px;
+}
+
+.resultado {
+    padding: 8px 0;
+    text-align: center;
+    animation: aparecer 0.4s ease;
+}
+
+.resultado-icone {
+    display: grid;
+    place-items: center;
+    width: 85px;
+    height: 85px;
+    margin: 0 auto 25px;
+    border: 1px solid rgba(196, 181, 253, 0.22);
+    border-radius: 28px;
+    background: linear-gradient(145deg, #50376f, #2c1c48);
+    box-shadow: 0 12px 40px rgba(139, 92, 246, 0.13);
+    font-size: 40px;
+    animation: flutuar 3s ease-in-out infinite;
+}
+
+.resultado .sobrelinha {
+    margin-bottom: 12px;
+}
+
+.resultado h1 {
+    font-size: clamp(27px, 5vw, 36px);
+}
+
+.mensagem-resultado {
+    margin: 0 auto 27px;
+}
+
+.pontuacao-card {
+    max-width: 390px;
+    margin: 0 auto;
+    padding: 26px;
+    border: 1px solid var(--borda);
+    border-radius: 19px;
+    background: rgba(255, 255, 255, 0.025);
+}
+
+.pontuacao-legenda {
+    color: var(--texto-suave);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.pontuacao-grande {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 7px;
+    margin: 13px 0 20px;
+    font: 800 51px "Manrope", sans-serif;
+    letter-spacing: -2px;
+}
+
+#pontuacaoFinal {
+    color: var(--roxo-claro);
+}
+
+.pontuacao-separador,
+#pontuacaoMaxima {
+    color: #716183;
+}
+
+.resultado-barra {
+    height: 7px;
+    margin-bottom: 25px;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #3a2a52;
+}
+
+#barraFinal {
+    width: 0;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #8b5cf6, #d8b4fe);
+    transition: width 0.8s ease;
+}
+
+.resultado-detalhes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.resultado-detalhes div {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.resultado-detalhes strong {
+    font: 700 19px "Manrope", sans-serif;
+}
+
+.resultado-detalhes span {
+    color: var(--texto-suave);
+    font-size: 10px;
+}
+
+.frase-final {
+    margin: 24px 0;
+    color: var(--roxo-claro);
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.botao-reiniciar {
+    min-width: 205px;
+    margin: 0 auto;
+}
+
+.rodape {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 26px 0 8px;
+    color: #78688e;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-align: center;
+}
+
+.rodape-simbolo {
+    color: var(--roxo);
+    font-size: 15px;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes flutuar {
+    0%, 100% {
+        transform: translateY(0) rotate(-3deg);
+    }
+    50% {
+        transform: translateY(-6px) rotate(3deg);
+    }
+}
+
+@media (max-width: 560px) {
+    body {
+        padding: 20px 13px;
+    }
+
+    .cabecalho {
+        margin-bottom: 30px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .tag-topo {
+        padding: 8px;
+        font-size: 8px;
+    }
+
+    .quiz-card {
+        padding: 23px 17px;
+        border-radius: 20px;
+    }
+
+    .quiz-topo {
+        margin-bottom: 27px;
+    }
+
+    .icone-trofeu {
+        width: 48px;
+        height: 48px;
+        border-radius: 15px;
+        font-size: 26px;
+    }
+
+    .alternativas {
+        grid-template-columns: 1fr;
+        gap: 9px;
+    }
+
+    .alternativa {
+        min-height: 57px;
+        padding: 11px;
+    }
+
+    .quiz-rodape {
+        align-items: stretch;
+    }
+
+    .dica {
+        align-self: center;
+    }
+
+    .quiz-rodape .botao-principal {
+        flex: 1;
+    }
+
+    .pontuacao-card {
+        padding: 21px 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
